@@ -1,0 +1,42 @@
+
+<div xmlns:th="http://www.thymeleaf.org" class="templatemo-sidebar">
+	<div style="text-align: center;">
+		<h1 style="margin-top: 5%; font-style: inherit; color: #286e0e;">
+			<img src="img/logo.jpg" alt="Bicycle"
+				class="img-circle img-thumbnail" width="30%" height="30%" /> ELOFF
+		</h1>
+	</div>
+	<!-- Search box -->
+    
+    <div style="margin-top: 30%"></div>
+  
+	<div class="mobile-menu-icon">
+		<i class="fa fa-bars"></i>
+	</div>
+	<nav class="templatemo-left-nav ">
+		<ul>
+			<li><a th:href="@{/welcome}"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+			
+			
+			<!--<li><a th:href="@{/userInfo}"><i class="fa fa-money"></i>UserInfo</a></li>
+				<li><a th:href="@{/admin}"><i class="fa fa-check"></i>Admin</a></li>
+				<li><a th:href="@{/roleList}"><i class="fa fa-users fa-fw"></i>Role Options</a></li>
+				<li><a sec:authorize="hasAuthority('LOdfghfghAN')" href="manage-users.html"><i class="fa fa-envelope-o fa-fw"></i>Inbox</a></li>
+			<li><a sec:authorize="hasAuthority('sdfsdf')" href="preferences.html"><i class="fa fa-sliders fa-fw"></i>Preferences</a></li>
+			<li><a sec:authorize="hasAuthority('sdfsdf')" href="login.html"><i class="fa fa-eject fa-fw"></i>Sign	Out</a></li>
+			-->
+			
+			<li><a sec:authorize="hasAuthority('LOAN')" th:href="@{/brokercompanyList}"><i class="fa fa-building-o" aria-hidden="true"></i>Brokers Companies</a></li>	
+			<li><a sec:authorize="hasAuthority('LOAN')" th:href="@{/realtorList}"  th:class="${classActiveSettings}"><i class="fa fa-users fa-fw"></i>Realtors Information</a></li>
+<!-- 			<li><a sec:authorize="hasAuthority('LOAN')" th:href="@{/roleList}"><i class="fa fa-briefcase" aria-hidden="true"></i>State of Operations</a></li> -->
+			<li><a sec:authorize="hasAuthority('LOAN')" th:href="@{/Letter_configList}"><i class="fa fa-file-text" aria-hidden="true"></i>Letter Management</a></li>
+			<li><a sec:authorize="hasAuthority('LOAN')" th:href="@{/clientList}"><i class="fa fa-users fa-fw"></i>Clients Information</a></li>
+			
+			<!-- estos son los de realtor -->
+			<li><a sec:authorize="hasAuthority('REALTOR')" th:href="@{/clientList}"><i class="fa fa-money"></i>My Clients</a></li>
+<!-- 			<li><a sec:authorize="hasAuthority('REALTOR')" th:href="@{/roleList}"><i class="fa fa-users fa-fw"></i>State of Operations</a></li> -->
+			<li><a sec:authorize="hasAuthority('REALTOR')" th:href="@{/Letter_configList}"><i class="fa fa-file-text" aria-hidden="true"></i>Letter Management</a></li>
+			
+		</ul>
+	</nav>
+</div>

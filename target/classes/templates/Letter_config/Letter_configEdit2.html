@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+<style type="text/css">
+div.dataTables_wrapper {
+	margin-bottom: 3em;
+}
+</style>
+</head>
+
+<body>
+
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+						<div class="col-lg-12">
+							<h1 class="page-header">Edit letter</h1>
+
+							<div id="fade" th:if="${successMessage}"
+								class="alert alert-success" role="alert"
+								th:text=${successMessage}></div>
+
+							<div id="fadeError" th:if="${errorMessage}"
+								class="alert alert-danger" role="alert" th:text=${errorMessage}></div>
+
+						</div>
+						<div>
+							<h2>
+								<span th:utext="${text}"></span>
+							</h2>
+
+							<form class="form-horizontal" id="/Letter_configEdit2"
+								action="/Letter_configEdit2" th:action="@{/Letter_configEdit2}"
+								method="POST">
+
+								<div class="form-group">
+									<input th:type="hidden" name="id"
+										th:field="${Letter_config.id}" />
+								</div>
+
+								<div class="form-group">
+									<input th:type="hidden" name="operation"
+										th:field="${Letter_config.operation}" />
+								</div>
+
+								<div class="form-group">
+									<input th:type="hidden" name="letterfixdata"
+										th:field="${Letter_config.letter_fixdata}" />
+								</div>
+
+								<div class="form-group">
+									<input th:type="hidden" name="active"
+										th:field="${Letter_config.active}" />
+								</div>
+
+								<div class="form-group">
+									<input th:type="hidden" name="delete"
+										th:field="${Letter_config.deleted}" />
+								</div>
+
+								<div class="form-group">
+									<input th:type="hidden" name="uniqueKey"
+										th:field="${Letter_config.uniqueKey}" />
+								</div>
+
+								<div class="col-lg-12">
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">Clients:</label>
+										<div th:each="row : ${clientsName}">
+											<label class="col-lg-4  control-label"></label>
+											<div class="col-lg-8" style="padding-bottom: 10px;">
+												<input type="text" readonly class="form-control"
+													th:value="${row}"></input>
+
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6" style="margin-bottom: 0;">
+										<label class="col-lg-4  control-label">Loan Type:</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" readonly class="form-control" id="title"
+												th:field="${Letter_config.loanType}" />
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">Loan Amount:</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" readonly class="form-control" id="title"
+												th:field="${Letter_config.loanAmount}" />
+										</div>
+
+									</div>
+
+									<div class="col-lg-1"></div>
+									<div class="col-lg-12">
+										<hr style="border-top: 1px solid #d5d5d5;">
+									</div>
+									<div class="col-lg-1"></div>
+								</div>
+								<div class="col-lg-12">
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">Location:</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input id="location" type="text" class="form-control letters"
+											placeholder="City, State" onfocus="this.value=''"
+												th:field="${Letter_config.location}" /> 
+												<small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('Letter_config.location')}"
+												th:errors="${Letter_config.location}"></small>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">Price:</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control" id="title"
+											onfocus="this.value=''" 											
+												th:field="${Letter_config.price}" />
+											<small class="form-text text-danger"
+												th:if="${#fields.hasErrors('Letter_config.price')}"
+												th:errors="${Letter_config.price}"></small>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">Interest (%):</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" th:readonly="${user} == 'REALTOR'"
+												class="form-control"
+												id="title" th:field="${Letter_config.interest}" /> 
+												<small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('Letter_config.interest')}"
+												th:errors="${Letter_config.interest}"></small>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">MI (%):</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" th:readonly="${user} == 'REALTOR'"
+												class="form-control"
+												id="title" th:field="${Letter_config.mi}" /> <small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('Letter_config.mi')}"
+												th:errors="${Letter_config.mi}"></small>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">Insurance (monthly):</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" th:readonly="${user} == 'REALTOR'"
+												class="form-control" id="title"
+												th:field="${Letter_config.insurance}" /> <small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('Letter_config.insurance')}"
+												th:errors="${Letter_config.insurance}"></small>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">Taxes (monthly):</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control" id="title"
+												th:field="${Letter_config.taxes}" /> <small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('Letter_config.taxes')}"
+												th:errors="${Letter_config.taxes}"></small>
+
+										</div>
+									</div>
+
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">Loan Term (months):</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" th:readonly="${user} == 'REALTOR'"
+												class="form-control" id="title"
+												th:field="${Letter_config.loanTerm}" /> <small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('Letter_config.loanTerm')}"
+												th:errors="${Letter_config.loanTerm}"></small>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">LTV (%):</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" th:readonly="${user} == 'REALTOR'"
+												class="form-control"
+												id="title" th:field="${Letter_config.ltv}" /> <small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('Letter_config.ltv')}"
+												th:errors="${Letter_config.ltv}"></small>
+										</div>
+									</div>
+
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">Max Pay (monthly):</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" th:readonly="${user} == 'REALTOR'"
+												class="form-control" id="title"
+												th:field="${Letter_config.maxPay}" /> <small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('Letter_config.maxPay')}"
+												th:errors="${Letter_config.maxPay}"></small>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label class="col-lg-4  control-label">HOA (monthly):</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control" id="title"
+												th:field="${Letter_config.hoa}" />
+										</div>
+									</div>
+
+								</div>
+
+								<div class="form-group" style="margin-right: 7%;">
+									<div class="col-lg-10"></div>
+									<div class="col-lg-1" style="align-content: left;">
+										<button type="submit" class="btn btn-primary">Save</button>
+									</div>
+
+									<div class="col-lg-1">
+										<a href="/Letter_configList" th:href="@{/Letter_configList}"
+											class="btn btn-danger" role="button">Cancel</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<th:block th:include="/_footer"></th:block>
+		</div>
+	</div>
+
+	<th:block th:include="/_js"></th:block>
+</body>
+</html>

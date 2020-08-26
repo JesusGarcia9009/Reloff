@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+
+						<div class="col-lg-12">
+							<h1 class="page-header">
+								Compaies List
+								<!--<small>Resumen.</small> -->
+							</h1>
+
+							<div id="fade" th:if="${successMessage}"
+								class="alert alert-success" role="alert"
+								th:text=${successMessage}></div>
+
+							<div id="fadeError" th:if="${errorMessage}"
+								class="alert alert-danger" role="alert" th:text=${errorMessage}></div>
+
+						</div>
+						<div>
+							<p>
+								<a href="/companyEdit" th:href="@{/companyEdit}">Create</a>
+							</p>
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Id</th>
+											<th>Name</th>
+											<th>Phisical Addres</th>
+											<th>Mailing Address</th>
+											<th>NMLS</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="company: ${companyList}">
+											<td th:text="${company.id}" />
+											<td th:text="${company.name}" />
+											<td th:text="${company.phisical_add}" />
+											<td th:text="${company.mailing_add}" />
+											<td th:text="${company.nmls}" />
+
+											<td><a href="/companyEdit/1"
+												th:href="@{/Loan_officerList/__${company.id}__}">Gestionar
+													Loans Officer</a> <a href="/companyEdit/1"
+												th:href="@{/companyEdit/__${company.id}__}">Edit</a> <a
+												href="/companyDelete/1"
+												th:href="@{/companyDelete/__${company.id}__}">Delete</a></td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<th:block th:include="/_footer"></th:block>
+		</div>
+
+	</div>
+
+
+	<th:block th:include="/_js"></th:block>
+
+</body>
+</html>

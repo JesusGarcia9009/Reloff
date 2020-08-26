@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+						<div class="col-lg-12">
+							<h1 class="page-header">
+								Loans List
+								<!--<small>Resumen.</small> -->
+							</h1>
+
+							<div id="fade" th:if="${successMessage}"
+								class="alert alert-success" role="alert"
+								th:text=${successMessage}></div>
+
+							<div id="fadeError" th:if="${errorMessage}"
+								class="alert alert-danger" role="alert" th:text=${errorMessage}></div>
+
+						</div>
+						<div>
+							<p>
+								<a href="/Loan_officerEdit" th:href="@{/Loan_officerEdit}">Create</a>
+							</p>
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Id</th>
+											<th>Full Name</th>
+											<th>Email</th>
+											<th>Mailing add</th>
+											<th>Cellphone</th>
+											<th>NMLS</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="loan_officer: ${loan_officerList}">
+											<td th:text="${loan_officer.loan_officer_id}" />
+											<td
+												th:text="${loan_officer.name} + ' ' + ${company.last_name}" />
+											<td th:text="${loan_officer.email}" />
+											<td th:text="${loan_officer.mailing_add}" />
+											<td th:text="${loan_officer.cellphone}" />
+											<td th:text="${loan_officer.nmls}" />
+
+											<td><a href="/companyEdit/1"
+												th:href="@{/Loan_officerEdit/__${loan_officer.loan_officer_id}__}">Gestionar
+													Loans Officer</a> <a href="/companyEdit/1"
+												th:href="@{/Loan_officerEdit/__${loan_officer.loan_officer_id}__}">Edit</a>
+												<a href="/companyDelete/1"
+												th:href="@{/Loan_officerDelete/__${loan_officer.loan_officer_id}__}">Delete</a></td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<th:block th:include="/_footer"></th:block>
+		</div>
+
+	</div>
+
+
+	<th:block th:include="/_js"></th:block>
+
+</body>
+</html>

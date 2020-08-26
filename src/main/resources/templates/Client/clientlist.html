@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+						<div id="fade" th:if="${successMessage}"
+							class="alert alert-success" role="alert"
+							th:text=${successMessage}></div>
+
+						<div id="fadeError" th:if="${errorMessage}"
+							class="alert alert-danger" role="alert" th:text=${errorMessage}></div>
+						<div class="col-lg-12 page-header">
+							<div class="col-lg-10">
+								<h1>
+									Clients List
+									<!--<small>Resumen.</small> -->
+								</h1>
+							</div>
+							<div class="col-lg-2" th:switch=${type} th:case="'REALTOR'" >
+							<a href="/clientExport" th:href="@{/clientExport}"
+									class="col-lg-4 btn btn-glyphicon top-glyphicon" role="button"><span class="glyphicon glyphicon-save-file"></span></a>
+							
+							</div>
+							<div class="col-lg-2" th:switch=${type} th:case="'LOAN OFFICER'" >
+								<a href="/clientEdit" th:href="@{/clientEdit}"
+									class="col-lg-6 btn btn-glyphicon top-glyphicon" role="button"><span class="glyphicon glyphicon-plus"></span></a>
+							<a href="/clientExport" th:href="@{/clientExport}"
+									class="col-lg-4 btn btn-glyphicon top-glyphicon" role="button"><span class="glyphicon glyphicon-save-file"></span></a>
+							
+							</div>
+						
+							<!--<p>
+								<a href="/clientEdit" th:href="@{/clientEdit}">Create</a>
+							</p>-->
+
+						</div>
+						<div>
+
+							<h2 th:text="${message}"></h2>
+
+
+							<div class="table-responsive" >
+              					<table id="mytable" class="table table-striped">
+									<thead>
+										<tr>
+											<th th:switch=${type} th:case="'REALTOR'" hidden="true">Actions</th>
+											<th th:switch=${type} th:case="'LOAN OFFICER'" >Actions</th>
+											<th>Full Name</th>
+											<th>Mail</th>
+											<th>Cellphone</th>
+											<th>Mailing_add</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="client: ${clientList}">
+											<td th:id="${client.id}"  th:switch=${type} th:case="'REALTOR'" hidden="true">
+											<a  
+												class="btn btn-glyphicon edit-glyphicon" href="#"
+												th:href="@{/clientEdit__${client.id}__}"><span class="glyphicon glyphicon-edit"></span></a>
+												 <a
+												class="btn btn-glyphicon delete-glyphicon" href="#"
+												th:href="@{/clientDelete__${client.id}__}"><span class="glyphicon glyphicon-trash"></span></a></td>
+												
+												<td th:id="${client.id}"  th:switch=${type} th:case="'LOAN OFFICER'" >
+											<a  
+												class="btn btn-glyphicon edit-glyphicon" href="#"
+												th:href="@{/clientEdit__${client.id}__}"><span class="glyphicon glyphicon-edit"></span></a>
+												 <a
+												class="btn btn-glyphicon delete-glyphicon" href="#"
+												th:href="@{/clientDelete__${client.id}__}"><span class="glyphicon glyphicon-trash"></span></a></td>
+											<td th:text="${client.name} + ' ' + ${client.last_name}" />
+											<td th:text="${client.email}" />
+											<td th:text="${client.cellphone}" />
+											<td th:text="${client.mailing_add}" />
+				
+											
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<th:block th:include="/_footer"></th:block>
+		</div>
+
+	</div>
+
+	<!-- JS -->
+	<th:block th:include="/_js"></th:block>
+
+</body>
+</html>

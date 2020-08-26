@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Include _head.html -->
+<th:block th:include="/_head"></th:block>
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+		<!-- Include _menu.html -->
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<!-- Include _topmenu.html -->
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+						<i class="fa fa-times"></i> 
+						<img src="../img/403-forbidden-tutoriel.jpg" style="width: 100%">
+						
+						<h3 th:if="${message != null}" th:utext="${message}"
+							style="color: red;"></h3>
+						<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+
+
+					</div>
+
+				</div>
+
+				<footer class="text-right">
+					<p>
+						Copyright &copy; 2018 Mock | Designed by <a
+							href="http://www.templatemo.com" target="_parent">MOCK</a>
+					</p>
+				</footer>
+			</div>
+		
+			<th:block th:include="/_footer"></th:block>
+		</div>
+	</div>
+
+	<th:block th:include="/_js"></th:block>
+
+</body>
+</html>
+

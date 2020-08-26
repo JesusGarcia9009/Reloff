@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+
+						<div id="fade" th:if="${successMessage}"
+							class="alert alert-success" role="alert"
+							th:text=${successMessage}></div>
+
+						<div id="fadeError" th:if="${errorMessage}"
+							class="alert alert-danger" role="alert" th:text=${errorMessage}></div>
+						<div class="col-lg-12 page-header">
+							<div class="col-lg-10">
+								<h1>Broker Companies</h1>
+							</div>
+							<div class="col-lg-2" style="padding-left: 17px;">
+								<a href="/brokercompanyEdit" th:href="@{/brokercompanyEdit}"
+									class="col-lg-6 btn btn-glyphicon top-glyphicon" role="button"><span class="glyphicon glyphicon-plus"></span></a>
+									
+							<a href="#" 
+									class="col-lg-4 btn btn-glyphicon top-glyphicon" role="button"><span class="glyphicon glyphicon-save-file"></span></a>
+							
+							</div>
+
+						</div>
+
+						<div>
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Actions</th>
+											<th>Name</th>
+											<th>Physical Address</th>
+											<th>Phone</th>
+											<th>Web Site</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="bcompany: ${brokercompanyList}">
+											<td th:id="${bcompany.id}"><a
+												sec:authorize="hasAuthority('LOAN')"
+												class="btn btn-glyphicon edit-glyphicon" href="#"
+												th:href="@{/brokercompanyEdit__${bcompany.id}__}"><span class="glyphicon glyphicon-edit"></span></a>
+
+												<a sec:authorize="hasAuthority('LOAN')"
+												class="btn btn-glyphicon delete-glyphicon" href="#"
+												th:href="@{/brokercompanyDelete__${bcompany.id}__}"><span class="glyphicon glyphicon-trash"></span></a>
+											<td th:text="${bcompany.name}" />
+											<td th:text="${bcompany.physical_add}" />
+											<td th:text="${bcompany.phone}" />
+											<td th:text="${bcompany.web_site}" />
+
+											
+
+
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<th:block th:include="/_footer"></th:block>
+		</div>
+
+	</div>
+
+
+	<th:block th:include="/_js"></th:block>
+
+</body>
+</html>

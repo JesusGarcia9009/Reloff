@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+<!-- Bootstrap CSS 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+-->
+</head>
+
+<body>
+	<div style="text-align: left; margin-left: 5%">
+		<h1 style="margin-top: 2%; margin-bottom: 2%; font-style: inherit; color: #69B14E;">
+			<img src="img/logo.jpg" alt="Bicycle"
+			
+				class="img-circle img-thumbnail" width="10%" height="10%" /> ELOFF
+		</h1>
+	</div>
+	<div class="templatemo-flex-row">
+	
+		<div class="templatemo-content col-1 light-gray-bg">
+			 
+ 	     <div class="templatemo-content-container" style="margin-left: 20%; margin-top: 10%">
+ 	          <div class="col-lg-15" style="padding-bottom: 20%"> 	
+ 	             <div class="col-lg-1">     
+ 	             <h1><span class="glyphicon glyphicon-save-file"></span></h1>
+ 	             </div> 	
+ 	              <div class="col-lg-11">         
+              	 <h2>Generate, Storage and Share Mortgage Documents with clients and associates</h2>
+	            </div>
+	          </div>  
+	          
+	          <div class="col-lg-15" style="padding-bottom: 20%"> 	
+ 	             <div class="col-lg-1">     
+ 	             <h1><span class="glyphicon glyphicon-link"></span></h1>
+ 	             </div> 	
+ 	              <div class="col-lg-11">         
+              	 <h2>Reach Clients and Associates in bulk with our powerful CRM Marketing Tool</h2>
+	            </div>
+	          </div> 
+	          
+	          <div class="col-lg-15"> 	
+ 	             <div class="col-lg-1">     
+ 	             <h1><span class="glyphicon glyphicon-hand-up"></span></h1>
+ 	             </div> 	
+ 	              <div class="col-lg-11">         
+              	 <h2>Designed to be as easy as 1-2-CLICK</h2>
+	            </div>
+	          </div> 
+	     </div>
+			<div style="margin-left: 65%; margin-top: 7%">
+			<a href="/realtorList" th:href="@{/login}" 
+				class="btn btn-primary" style="background-color: #69B14E; border-color: #69B14E">Log in</a>
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+						<div class="col-lg-12">
+		                    <h1 class="page-header">
+		                        Request User Account
+		                        <!--<small>Resumen.</small> -->
+		                    </h1>
+		                </div>
+						<div>
+	
+							<form class="form-horizontal" id="landingPage"
+								action="/" th:action="@{/}" method="post">	
+
+
+								<div class="col-lg-12">
+								<div class="form-group col-lg-6">
+									<label for="name" class="col-lg-4 control-label">First Name: </label>
+									<div class="col-lg-8">
+										<input id="name" type="text" class="form-control letters" required="required"
+											th:field="${request.fName}" /> 
+<!-- 											<small -->
+<!-- 											class="form-text text-danger" -->
+<!-- 											th:if="${#fields.hasErrors('realtor.name')}" -->
+<!-- 											th:errors="${realtor.name}"></small> -->
+									</div>
+								</div>							
+								
+								<div class="form-group col-lg-6">
+									<label for="last_name" class="col-lg-4 control-label">Last Name: </label>
+									<div class="col-lg-8">
+										<input id="last_name" type="text" class="form-control letters" required="required"
+											th:field="${request.lName}" /> 
+<!-- 											<small -->
+<!-- 											class="form-text text-danger" -->
+<!-- 											th:if="${#fields.hasErrors('realtor.last_name')}" -->
+<!-- 											th:errors="${realtor.last_name}"></small> -->
+									</div>
+								</div>
+								</div>
+								
+								<div class="form-group col-lg-6">
+									<label for="cellphone" class="col-lg-4 control-label " style="padding-right: 0;">Company:
+							         </label>
+									<div class="col-lg-8">
+										<input id="cellphone" type="text" class="form-control letters" required="required"
+											th:field="${request.company}" /> 
+<!-- 											<small -->
+<!-- 											class="form-text text-danger" -->
+<!-- 											th:if="${#fields.hasErrors('realtor.cellphone')}" -->
+<!-- 											th:errors="${realtor.cellphone}"></small> -->
+									</div>
+								</div>								
+							
+									<div class="form-group col-lg-12">
+									<label for="email" class="col-lg-2 control-label" >Email:
+										</label>
+									<div class="col-lg-8">
+										<input id="email" type="text" class="form-control" required="required"
+											th:field="${request.email}" /> 
+<!-- 											<small -->
+<!-- 											class="form-text text-danger" -->
+<!-- 											th:if="${#fields.hasErrors('realtor.email')}" -->
+<!-- 											th:errors="${realtor.email}"></small> -->
+									 </div>
+							     	</div>	
+							     	
+							     	<div class="form-group col-lg-12">
+									<label for="email" class="col-lg-2 control-label" >Address:
+										</label>
+									<div class="col-lg-8">
+										<input id="email" type="text" class="form-control" required="required"
+											th:field="${request.mailAdd}" /> 
+<!-- 											<small -->
+<!-- 											class="form-text text-danger" -->
+<!-- 											th:if="${#fields.hasErrors('realtor.email')}" -->
+<!-- 											th:errors="${realtor.email}"></small> -->
+									 </div>
+							     	</div>	
+							     <div class="col-lg-12">
+							        <div class="form-group col-lg-11">
+									<label for="email" class="col-lg-2 control-label" >Phone No.:
+										</label>
+									<div class="col-lg-4">
+										<input id="email" type="text" class="form-control numbers" required="required"
+											th:field="${request.phoneNo}" /> 
+<!-- 											<small -->
+<!-- 											class="form-text text-danger" -->
+<!-- 											th:if="${#fields.hasErrors('realtor.email')}" -->
+<!-- 											th:errors="${realtor.email}"></small> -->
+									 </div>
+							     	</div>		
+							     </div>	
+							   
+								<div class="form-group col-lg-6">
+									<label for="license" class="col-lg-4 control-label" style="padding-right: 0;padding-left: 14px;">License:
+										 </label>
+									<div class="col-lg-8">
+										<input id="license" type="text" class="form-control" required="required"
+											th:field="${request.nmls}" />
+<!-- 											 <small -->
+<!-- 											class="form-text text-danger" -->
+<!-- 											th:if="${#fields.hasErrors('realtor.license_number')}" -->
+<!-- 											th:errors="${realtor.license_number}"></small> -->
+									</div>
+								</div>	
+							   
+								<div class="form-group" style="margin-right:40%;">
+									<div class="col-lg-9"></div>
+									<div class="col-lg-1" style="align-content: left;">
+										<button type="submit" class="btn btn-primary" style="background-color: #69B14E; border-color: #69B14E">Send</button>
+									</div>	
+								</div>
+								
+<!-- 								 <button type="submit" class="btn btn-primary">Save</button>
+<!-- 								<a href="/realtorList" th:href="@{/realtorList}" -->
+<!-- 									class="btn btn-danger" role="button">Cancel</a> --> 
+									
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<th:block th:include="/_footer"></th:block>
+		</div>
+	</div>
+			
+ 	          <div class="col-lg-15"> 
+ 	          	<div style="text-align: left; margin-left: 15%; margin-top: 1%">	
+		    	<img src="img/bottomLogo.jpg" alt="Bicycle" title="DGPinnacle" width="20%" height="20%" />
+	         </div>
+	           </div>
+ 	          	<div class="col-lg-11" style="margin-left: 15%; margin-top: 1%">         
+              	 <h3>NLMLS # 1433994</h3>
+                 <h3>  782 NW 42th Avenue, Suite 450</h3>
+                 <h3>    Miami FL, 33126</h3>
+	            </div>
+	           <div style="margin-bottom: 15px">
+	            <div class="col-lg-15" style="margin-left: 15%; margin-top: 1%">  	            	
+ 	              <div class="col-lg-2">          
+                	 <h3><span class="glyphicon glyphicon-earphone"></span> (305)851-5225</h3>
+	              </div>
+	             </div>
+	             <div class="col-lg-12" style="margin-left: 14%; margin-top: 1%">  
+	              <div class="col-lg-4">          
+                	 <h3><span class="glyphicon glyphicon-envelope"></span> info@dgpinnacle.com</h3>
+	              </div>
+	             </div>
+	             <div class="col-lg-12" style="margin-left: 14%; margin-top: 1%">  
+	              <div class="col-lg-4">          
+                	 <h3><span class="glyphicon glyphicon-envelope"></span><a href="http://www.dgpinnacle.com"> www.dgpinnacle.com</a></h3>
+	              </div>
+	             </div>
+	            </div>  
+       
+	   
+
+	<th:block th:include="/_js"></th:block>
+
+</body>
+</html>

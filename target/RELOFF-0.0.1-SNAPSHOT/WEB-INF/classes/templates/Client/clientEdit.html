@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+<style type="text/css">
+div.dataTables_wrapper {
+	margin-bottom: 3em;
+}
+</style>
+</head>
+<body>
+
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+						<div class="col-lg-12">
+							<h1 class="page-header">
+								<span th:utext="${text}"></span> Client information
+							</h1>
+
+						</div>
+						<div>
+
+							<form class="form-horizontal" id="/clientEdit"
+								action="/clientEdit" th:action="@{/clientEdit}" method="post">
+
+								<div class="form-group">
+									<input th:type="hidden" name="id" th:field="${client.id}" />
+								</div>
+
+								<div class="form-group">
+									<label for="name" class="col-lg-2 control-label">First Name: * </label>
+									<div class="col-lg-6">
+										<input id="name" type="text" class="form-control letters"
+											th:field="${client.name}" /> 
+											<small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('client.name')}"
+											th:errors="${client.name}"></small>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="last_name" class="col-lg-2 control-label">Last
+										Name: * </label>
+									<div class="col-lg-6">
+										<input id="last_name" type="text" class="form-control letters"
+											th:field="${client.last_name}" /> <small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('client.last_name')}"
+											th:errors="${client.last_name}"></small>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="col-lg-2 control-label">Email:
+										* </label>
+									<div class="col-lg-6">
+										<input id="email" type="text" class="form-control"
+											th:field="${client.email}" /> <small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('client.email')}"
+											th:errors="${client.email}"></small>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="cellphone" class="col-lg-2 control-label">Cellphone:
+										* </label>
+									<div class="col-lg-6">
+										<input id="cellphone" type="text" class="form-control numbers"
+											th:field="${client.cellphone}" /> <small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('client.cellphone')}"
+											th:errors="${client.cellphone}"></small>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="mailing_add" class="col-lg-2 control-label">Mailing
+										Address: * </label>
+									<div class="col-lg-6">
+										<textarea class="form-control input-sm" rows="2"
+											th:field="${client.mailing_add}" ></textarea> <small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('client.mailing_add')}"
+											th:errors="${client.mailing_add}"></small>
+									</div>
+								</div>
+								<div class="form-group" style="margin-right: 3%;">
+									<div class="col-lg-6"></div>
+									<div class="col-lg-1" style="align-content: left;">
+										<button type="submit" id="btn_create_client"
+											class="btn btn-primary">Save</button>
+									</div>
+								
+									<div class="col-lg-1">
+										<a href="/clientList" th:href="@{/clientList}"
+											class="btn btn-danger" role="button">Cancel</a>
+									</div>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<th:block th:include="/_footer"></th:block>
+		</div>
+	</div>
+
+	<th:block th:include="/_js"></th:block>
+	
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+<link href="css/dataTables.bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+						<div class="col-lg-12">
+							<h1 class="page-header">
+								Create letter
+								<!--<small>Resumen.</small> -->
+							</h1>
+
+							<div id="fade" th:if="${successMessage}"
+								class="alert alert-success" role="alert"
+								th:text=${successMessage}></div>
+
+							<div id="fadeError" th:if="${errorMessage}"
+								class="alert alert-danger" role="alert" th:text=${errorMessage}></div>
+
+						</div>
+						<div>
+							<h2>
+								<span th:utext="${text}"></span>
+							</h2>
+
+							<form class="form-horizontal" id="/CreateNewLetter"
+								action="/CreateNewLetter" th:action="@{/CreateNewLetter}"
+								method="post">
+
+								<div class="form-group">
+									<input th:type="hidden" name="id"
+										th:field="${viewModel.letter.id}" /> <input th:type="hidden"
+										name="uniqueKey" th:field="${viewModel.letter.uniqueKey}" />
+								</div>
+
+								<div class="col-lg-6">
+
+									<div class="form-group col-lg-12">
+										<label for="location" class="col-lg-4  control-label">Location:
+											* </label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control" id="location"
+												placeholder="City, State"
+												th:field="${viewModel.letter.location}" /> <small
+												id="locationSmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+									<div class="form-group col-lg-12">
+										<label for="price" class="col-lg-4  control-label">Price:
+											* </label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control floats" id="price"
+												th:field="${viewModel.letter.price}" /> <small
+												id="priceSmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+									<div class="form-group col-lg-12">
+										<label for="loanAmount" class="col-lg-4  control-label">Interest:
+											(%)*</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control floats" id="interest"
+												placeholder="%" onfocus="this.value=''"
+												th:field="${viewModel.letter.interest}" /> <small
+												id="interestSmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+									<div class="form-group col-lg-12">
+										<label for="loanAmount" class="col-lg-4  control-label">MI:
+											(%)</label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control floats" id="mi"
+												placeholder="%" th:field="${viewModel.letter.mi}" /> <small
+												id="miSmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+									<div class="form-group col-lg-12">
+										<label for="loanAmount" class="col-lg-4  control-label">Insurance:
+											(montlhy) </label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control floats" id="insurance"
+												placeholder="montlhy" onfocus="this.value=''"
+												th:field="${viewModel.letter.insurance}" /> <small
+												id="insuranceSmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+									<div class="form-group col-lg-12">
+										<label for="taxes" class="col-lg-4  control-label">Taxes:
+											(monthly)* </label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control floats" id="taxes"
+												placeholder="montlhy" onfocus="this.value=''"
+												th:field="${viewModel.letter.taxes}" /> <small
+												id="TaxesSmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+									<div class="form-group col-lg-12">
+										<label for="loanTerm" class="col-lg-4  control-label">Loan
+											Term: (months)* </label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control floats" id="loanTerm"
+												placeholder="months" onfocus="this.value=''"
+												th:field="${viewModel.letter.loanTerm}" /> <small
+												id="loanTermSmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-12">
+										<label for="ltv" class="col-lg-4  control-label">LTV:
+											(%) * </label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control floats" id="ltv"
+												placeholder="%" onfocus="this.value=''"
+												th:field="${viewModel.letter.ltv}" /> <small id="LTVSmall"
+												class="form-text text-danger"></small>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-12">
+										<label for="loancombo" class="col-lg-4  control-label">Loan
+											Type: * </label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<select id="loancombo"
+												th:field="${viewModel.letter.loanType}" class="form-control">
+												<option value="default">Select a Loan Type</option>
+												<option th:value="FHA" value="default">FHA</option>
+												<option th:value="Conventional">Conventional</option>
+											</select> <small id="LoanTypeSmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+									<div class="form-group col-lg-12">
+										<label for="maxPay" class="col-lg-4  control-label">Max
+											Pay: * </label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<input type="text" class="form-control floats" id="maxPay"
+												placeholder="monthly" onfocus="this.value=''"
+												th:field="${viewModel.letter.maxPay}" /> <small
+												id="MaxPaySmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+
+
+									<div class="form-group col-lg-12">
+										<label for="comboRealtor" class="col-lg-4  control-label">Realtor:
+											* </label>
+										<div class="col-lg-8" style="padding-bottom: 10px;">
+											<select id="comboRealtor" class="form-control floats"
+												th:field="${viewModel.idRealtor}">
+												<option value="default">Select a Realtor</option>
+												<option th:each="realtor: ${viewModel.realtorList}"
+													th:value="${realtor.userId}" th:utext="${realtor.name}" />
+											</select> <small id="comboRealtorSmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-12">
+										<label for="HOA" class="col-lg-4  control-label">HOA: (monthly)
+											 </label>
+										<div class="col-lg-8" style="padding-bottom: 20px;">
+											<input type="text" class="form-control floats" id="HOA" 
+												placeholder="monthly" th:field="${viewModel.letter.hoa}" />
+											<small id="HOASmall" class="form-text text-danger"></small>
+										</div>
+									</div>
+
+
+								</div>
+								
+								
+<label style="text-align:left;padding-left: 0;" class="col-lg-6  control-label">Client's List:</label>
+<small id="clientSmall" class="form-text text-danger"></small>
+<div class="col-lg-6" style="padding: 1%;border:1px solid #dadada;width:45%;margin-top: 2%;">
+								<div class="col-lg-12" style="padding-right: 4%;margin-top: 3%;">
+									<div class="templatemo-flex-row flex-content-row">
+										<div class="col-1">
+											<input class="col-lg-4 table-responsive" type="text"
+												id="clients" th:field="${viewModel.clientsids}"
+												hidden="true" />
+											<table id="clientTable"
+												class="table table-striped dt-responsive nowrap"
+												style="width: 100%">
+												<thead>
+													<tr>
+														<th style="width: 1%"></th>
+														<th>Name</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="client: ${viewModel.clientList}">
+														<td><input type="checkbox" name="checkbox"
+															id="${client.id}" th:value="${client.id}"></td>
+														<td th:text="${client.name} + ' ' + ${client.last_name}" />
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+</div>
+								<div class="form-group" style="margin-right: 4%;">
+									<div class="col-lg-9"></div>
+									<div class="col-lg-1" style="align-content: left;">
+										<button type="submit" id="CreateletterSave"
+											class="btn btn-primary">Save</button>
+									</div>
+
+									<div class="col-lg-1">
+										<a href="/Letter_CreateNewLetter" th:href="@{/Letter_CreateNewLetter}"
+											class="btn btn-danger" role="button">Cancel</a>
+									</div>
+								</div>
+
+								<!-- <button type="submit" class="btn btn-primary">Save</button>
+								<a href="/Letter_configList" th:href="@{/Letter_configList}"
+									class="btn btn-danger" role="button">Cancel</a> -->
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<th:block th:include="/_footer"></th:block>
+		</div>
+	</div>
+
+	<th:block th:include="/_js"></th:block>
+	<!-- custom js -->
+	<script type="text/javascript" src="js/custom/validator_letter.js"></script>
+
+</body>
+</html>

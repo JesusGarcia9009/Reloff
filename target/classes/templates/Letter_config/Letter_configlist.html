@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+
+						<div id="fade" th:if="${successMessage}"
+							class="alert alert-success" role="alert"
+							th:text=${successMessage}></div>
+
+						<div id="fadeError" th:if="${errorMessage}"
+							class="alert alert-danger" role="alert" th:text=${errorMessage}></div>
+
+						<div class="col-lg-12 page-header">
+							<div class="col-lg-10">
+								<h1>
+									Letters List
+									<!--<small>Resumen.</small> -->
+								</h1>
+							</div>
+							<!--<div class="col-lg-2"
+								style="padding-left: 18px; padding-right: 0;">
+								<a href="/CreateNewLetter" th:href="@{/CreateNewLetter}"
+									class="col-lg-12 btn btn-success" role="button">Create</a>
+							</div>-->
+
+						</div>
+						<div>
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Actions</th>
+											<th>Clients</th>
+											<th>Location</th>
+											<th>Sales Price</th>
+<!-- 											<th>LoanAmount</th> -->
+<!-- 											<th>Loan Term</th> -->
+											<th>Loan Type</th>
+<!-- 											<th>Mortgage</th> -->
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="vm: ${letterList}">
+										<td><a class="btn btn-glyphicon edit-glyphicon"
+												href="/Letter_configEdit2/1"
+												th:href="@{/Letter_configEdit2__${vm.letter.id}__}"><span class="glyphicon glyphicon-edit"></span></a> 
+												<a class="btn btn-glyphicon top-glyphicon"
+												href="/Letter_configLetter/1"
+												th:href="@{/Letter_configLetter__${vm.letter.id}__}"><span class="glyphicon glyphicon-print"></span>
+												</a>
+												<a class="btn btn-glyphicon delete-glyphicon"
+												href="/Letter_configDelete/1"
+												th:href="@{/Letter_configDelete__${vm.letter.id}__}"><span class="glyphicon glyphicon-trash"></span></a>
+												
+												<a class="btn btn-glyphicon top-glyphicon"
+												href="/Letter_configDelete/1"
+												th:href="@{/Letter_configCalculator__${vm.letter.id}__}"><span class="glyphicon glyphicon-modal-window"></span></a>
+											</td>
+										
+<!-- 											<td th:text="${letter.id}" /> -->
+											<td th:text="${vm.clientsName}" />
+											<td th:text="${vm.letter.location}" />
+											<td th:text="${vm.letter.price}" />
+<!-- 											<td th:text="${letter.loanAmount}" /> -->
+<!-- 											<td th:text="${letter.loanTerm}" /> -->
+											<td th:text="${vm.letter.loanType}" />
+<!-- 											<td th:text="${letter.maxPay}" /> -->
+
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<th:block th:include="/_footer"></th:block>
+		</div>
+
+	</div>
+
+
+	<th:block th:include="/_js"></th:block>
+
+</body>
+</html>

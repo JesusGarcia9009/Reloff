@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+						<div>
+							<p>
+								<a href="/roleEdit" th:href="@{/roleEdit}">Create</a>
+							</p>
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>id</th>
+											<th>Name</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="role: ${roleList}">
+											<td th:text="${role.roleId}" />
+											<td th:text="${role.roleName}" />
+
+											<td><a href="/roleEdit/1"
+												th:href="@{/roleEdit/__${role.roleId}__}">Edit</a> <a
+												href="/roleDelete/1"
+												th:href="@{/roleDelete/__${role.roleId}__}">Delete</a></td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<th:block th:include="/_footer"></th:block>
+		</div>
+
+	</div>
+
+	<th:block th:include="/_js"></th:block>
+
+</body>
+</html>

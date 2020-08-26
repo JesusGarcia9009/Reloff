@@ -1,0 +1,49 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Include _head.html -->
+<th:block th:include="/_head"></th:block>
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+		<!-- Include _menu.html -->
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<!-- Include _topmenu.html -->
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+						<i class="fa fa-times"></i>
+						<h2>
+							Message : <span th:utext="${message}"></span>
+						</h2>
+						<div>
+							<h3>
+								Welcome : <span th:utext="${#request.userPrincipal.name}"></span>
+							</h3>
+							<b>This is protected page!</b> <br /> <br />
+
+							<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<th:block th:include="/_footer"></th:block>
+		</div>
+	</div>
+
+	<th:block th:include="/_js"></th:block>
+
+</body>
+</html>
+
+

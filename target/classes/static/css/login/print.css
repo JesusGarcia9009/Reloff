@@ -1,0 +1,19 @@
+@media print
+{
+.noprint {display:none;}
+
+.content {
+        width: 100%;
+        float: none;
+        padding-left: 0;
+        background: #fff;
+        -webkit-print-color-adjust: exact; /*economy | exact*/        
+        color-adjust: exact;
+    }
+}
+
+.boldText
+{
+	font-weight: bolder;
+	font-size: 10;	
+}

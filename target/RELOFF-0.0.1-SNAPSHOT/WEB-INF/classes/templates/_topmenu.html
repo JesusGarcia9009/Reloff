@@ -1,0 +1,23 @@
+<div class="templatemo-top-nav-container">
+	<div class="row" style="text-align: right;">
+		<nav class="templatemo-top-nav col-lg-12 col-md-12">
+			<ul class="text-uppercase">
+<!-- 				<li><a sec:authorize="hasAuthority('REALTOR')" -->
+<!-- 					th:href="@{/logout}" class="active">Admin panel</a></li> -->
+				<li><a 
+					th:href="@{/welcome}">Dashboard</a></li>
+					<li style="border-right: 2px solid #c5c5c5;"><a sec:authorize="hasAuthority('LOAN')"
+					th:href="@{/CreateNewLetter}">Create New Letter</a></li>
+<!-- 				<li><a sec:authorize="hasAuthority('REALTOR')" -->
+<!-- 					th:href="@{/logout}">Info</a></li> -->
+				<li style="float:right;"><a th:if="${#request.userPrincipal != null}"
+					th:href="@{/changePasswordAdmin}">Reset Pass</a></li>
+				<li style="float:right;"><a th:if="${#request.userPrincipal != null}"
+					th:href="@{/profile}">Edit Pprofile</a></li>
+				<li style="float:right;"><a th:if="${#request.userPrincipal != null}"
+					th:href="@{/logout}">Logout</a></li>					
+				<!--  <li><h3 th:inline="text">Active Role: [[${#httpServletRequest.remoteUser}]]!</h3></li>-->
+			</ul>
+		</nav>
+	</div>
+</div>

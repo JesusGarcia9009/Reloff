@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+
+		<th:block th:include="/_menu"></th:block>
+
+		<!-- Main content -->
+
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<th:block th:include="/_topmenu"></th:block>
+
+			<div class="templatemo-content-container">
+				<div class="templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+
+						<div id="fade" th:if="${successMessage}"
+							class="alert alert-success" role="alert"
+							th:text=${successMessage}></div>
+
+						<div id="fadeError" th:if="${errorMessage}"
+							class="alert alert-danger" role="alert" th:text=${errorMessage}></div>
+						<div class="col-lg-12 page-header">
+							<div class="col-lg-10">
+								<h1>
+									Realtors List
+									<!--<small>Resumen.</small> -->
+								</h1>
+							</div>
+							<div class="col-lg-1"
+								style="padding-left: 18px; padding-right: 0;">
+								<a href="/realtorEdit" th:href="@{/realtorEdit}"
+									class="col-lg-6 btn btn-glyphicon top-glyphicon" role="button"><span class="glyphicon glyphicon-plus"></span></a>
+									
+							<a href="#" class="col-lg-4 btn btn-glyphicon top-glyphicon" role="button"><span class="glyphicon glyphicon-save-file"></span></a>
+							
+							</div>
+							<!--<p>
+								<a href="/realtorEdit" th:href="@{/realtorEdit}">Create</a>
+							</p>-->
+
+						</div>
+
+
+						<div>
+							<div class="table-responsive">
+								<table class="large_table_padding table">
+									<thead>
+										<tr>
+										<th style="width: 16%;">Actions</th>
+											<th>Full Name</th>
+											<th>Mail</th>
+											<th>Cellphone</th>
+											<th>License number</th>
+											<th>Mailing_add</th>
+											<th>Broker Company</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="realtor: ${realtorList}">
+										<td th:id="${realtor.userId}"><a
+												class="btn btn-glyphicon edit-glyphicon" href="#"
+												th:href="@{/realtorEdit__${realtor.userId}__}"><span class="glyphicon glyphicon-edit"></span></a>
+												 <a	class="btn btn-glyphicon delete-glyphicon" href="#"
+												th:href="@{/realtorDelete__${realtor.userId}__}"><span class="glyphicon glyphicon-trash"></span></a></td>
+											<td th:text="${realtor.name} + ' ' + ${realtor.last_name}" />
+											<td th:text="${realtor.email}" />
+											<td th:text="${realtor.cellphone}" />
+											<td th:text="${realtor.license_number}" />
+											<td th:text="${realtor.mailing_add}" />
+											<td th:text="${realtor.broker_company}" />
+
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<th:block th:include="/_footer"></th:block>
+		</div>
+
+	</div>
+
+	<th:block th:include="/_js"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<th:block th:include="/_head"></th:block>
+
+
+
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700'
+	rel='stylesheet' type='text/css' />
+<link href="../css/font-awesome.min.css" rel="stylesheet" />
+<link href="../css/bootstrap.min.css" rel="stylesheet" />
+<link href="../css/templatemo-style.css" rel="stylesheet" />
+<link href="../css/login/print.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="templatemo-flex-row">
+
+		<!-- Include _menu.html -->
+		<div class="noprint">
+			<th:block th:include="/_menu"></th:block>
+		</div>
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+			<div class="noprint">
+				<th:block th:include="/_topmenu"></th:block>
+			</div>
+		
+		<div class="content">	
+			<div class="templatemo-content-container">
+			
+			<div class="col-lg-12" >
+				<div class="noprint">
+					<div class="col-lg">
+						<button style="float: right;margin-right:33px;" type="button" onclick="window.print()"
+							class="btn btn-glyphicon letter-glyphicon"><span class="glyphicon glyphicon-print"></span></button>
+						<a style="margin-left:33px;" href="/Letter_configList" th:href="@{/Letter_configList}"
+							class="btn btn-glyphicon letter-glyphicon" role="button"><span class="glyphicon glyphicon-arrow-left"></span></a>
+							
+					</div>
+				</div>
+			</div>
+			
+				<div class="col-lg-12 templatemo-flex-row flex-content-row">
+					<div class="templatemo-content-widget white-bg col-2">
+						<div style="margin-left: 30px">
+							<div style="margin-left: 170px">
+								<h1
+									style="margin-top: 1px; font-style: inherit; color: #286e0e;">
+									<img src="../img/login/dgPinnacle.png" alt="Bicycle"
+										width="55%" height="55%" />
+								</h1>
+							</div>
+							<div
+								style="text-align: right; margin-right: 15%; margin-top: 3%;">
+								<script>
+									var meses = new Array("January",
+											"February", "Mach", "April", "May",
+											"June", "July", "August",
+											"September", "October", "November",
+											"December");
+									var diasSemana = new Array("Sunday",
+											"Monday", "Tuesday", "Wednesday",
+											"Thursday", "Friday", "Saturday");
+									var f = new Date();
+									document.write(diasSemana[f.getDay()]
+											+ ", " + meses[f.getMonth()] + " "
+											+ f.getDate() + ", "
+											+ f.getFullYear());
+								</script>
+							</div>
+
+							<div class="form-group">
+								<input th:type="hidden" name="id" th:field="${Letter_config.letter.id}" />
+							</div>
+
+							<div class="">
+								<div class="row">
+									<div class="col-lg">
+										<p style="font-weight: bold;" class="boldText">Re:
+											Pre-Qualification Notification</p>
+									</div>
+									<div>
+										<p>
+											Dear: <span  th:each="a, iterate : ${Letter_config.clientsName}" th:text="!${iterate.last} ? ${a} + ', ': ${a}">
+</span>
+										</p>
+									</div>
+									<div>
+										<p>
+											<span th:utext="${fix_data_subject}"></span>
+										</p>
+									</div>
+									<div>
+										<p style="font-weight: bold;" class="boldText">Secure by
+											the property located at:</p>
+										<span th:utext="${Letter_config.letter.location}"></span>
+									</div>
+									<div style="margin-top: 15px;">
+										<p style="font-weight: bold;" class="boldText">Loan Terms:</p>
+										<p>
+											Sales Price: $<span th:utext="${Letter_config.letter.price}"></span>
+										<p />
+										<p>
+											Loan Amount: $<span th:utext="${Letter_config.letter.loanAmount}"></span>
+										<p />
+										<p>
+											LTV: <span th:utext="${Letter_config.letter.ltv}"></span>%
+										<p />
+										<p>
+											Loan Term :<span th:utext="${Letter_config.letter.loanTerm}"></span>
+										<p />
+										<p>
+											Loan Type :<span th:utext="${Letter_config.letter.loanType}"></span>
+										<p />
+									</div>
+
+									<div style="margin-top: 15px;">
+										<p style="font-weight: bold;" class="boldText">Specific
+											conditions required prior to closing include the following:</p>
+										<p>1) Evidence of Hazard Insurance and Flood insurance (if
+											required).</p>
+										<p>2) Satisfactory property appraisal.</p>
+										<p>3) Clear title work.</p>
+										<p>4) Any other condition as per the underwriter request.</p>
+									</div>
+									<div style="margin-top: 15px;">
+										<p style="font-weight: bold;" class="boldText"></p>
+										<span th:utext="${fix_data_ftext}"></span>
+									</div>
+									<div style="margin-top: 30px; margin-bottom: 10px">
+										<p>Noel Veitia</p>
+										<p>NMLS: 277729</p>
+										<p>Your Home Financing Partner.</p>
+										<p>Mortgage Loan Originator</p>
+									</div>
+									<div style ="margin-left: 30%">
+									<p>
+											Certificate number :<span th:utext="${Letter_config.letter.uniqueKey}"></span>
+										<p />
+									</div>
+
+
+								</div>
+							</div>
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="noprint">
+				<th:block th:include="/_footer"></th:block>
+			</div>
+		</div>
+	</div>
+
+	<th:block th:include="/_js"></th:block>
+</body>
+</html>
